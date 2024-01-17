@@ -1,35 +1,66 @@
-// src/index.ts
 import express, { Request, Response } from 'express';
+
+interface User {
+  userId: string;
+  name: string;
+  email: string;
+}
 
 export const app = express();
 const port = 3000;
 
+app.use(express.json());
+
+const userDatabase: { [key: string]: User } = {
+  'validuser': { userId: 'validuser', name: 'John Doe', email: 'john.doe@example.com' },
+
+};
+
+
 app.get('/api/user/:userId', async (req: Request, res: Response) => {
-    const userId = req.params.userId;
-    const userInfo = getUserInfo(userId);
-  
-    if (userInfo !== null && userInfo !== undefined) {
-        res.json(userInfo);
-      } else {
-        res.status(404).json({ error: 'User not found' });
-      }
-  });
+  const userId = req.params.userId;
+  const userInfo = getUserInfo(userId);
+
+  if (userInfo !== null && userInfo !== undefined) {
+    res.json(userInfo);
+  } else {
+    res.status(404).json({ error: 'User not found' });
+  }
+});
+
+
+app.put('/api/user/:userId', async (req: Request, res: Response) => {
+  const userId = req.params.userId;
+  const updatedUserInfo = req.body as Partial<User>;
+  const success = editUserInfo(userId, updatedUserInfo);
+
+  if (success) {
+    res.json({ message: 'User information updated successfully' });
+  } else {
+    res.status(404).json({ error: 'User not found or update failed' });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
-export function getUserInfo(userId: string): any {
-    console.log(`Searching for user with ID: ${userId}`);
-    
-    // Check if the user exists based on your logic
-    const user = userId === '1' ? { userId, name: 'John Doe', email: 'john.doe@example.com' } : null;
-  
-    if (user) {
-      console.log(`User found: ${JSON.stringify(user)}`);
-    } else {
-      console.log('User not found');
-    }
-  
-    return user;
+export function getUserInfo(userId: string): User | null {
+  const userInfo = userDatabase[userId];
+
+  if (userInfo !== undefined) {
+    return userInfo;
+  } else {
+    return null;
   }
+}
+
+export function editUserInfo(userId: string, updatedUserInfo: Partial<User>): boolean {
+  if (userDatabase[userId] !== undefined) {
+
+    userDatabase[userId] = { ...userDatabase[userId], ...updatedUserInfo };
+    return true;
+  } else {
+    return false;
+  }
+}
