@@ -1,4 +1,6 @@
 import express, { Request, Response } from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
 
 interface User {
   userId: string;
@@ -57,10 +59,20 @@ export function getUserInfo(userId: string): User | null {
 
 export function editUserInfo(userId: string, updatedUserInfo: Partial<User>): boolean {
   if (userDatabase[userId] !== undefined) {
-
-    userDatabase[userId] = { ...userDatabase[userId], ...updatedUserInfo };
-    return true;
+    userDatabase[userId] = {
+      ...userDatabase[userId],
+      name: updatedUserInfo.name || '', // Use empty string as default
+      email: updatedUserInfo.email || '', // Use empty string as default
+    };
   } else {
-    return false;
+    userDatabase[userId] = {
+      userId,
+      name: updatedUserInfo.name || '', // Use empty string as default
+      email: updatedUserInfo.email || '', // Use empty string as default
+    };
   }
+
+  return true;
 }
+
+
