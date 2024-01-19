@@ -1,36 +1,25 @@
+// authMiddleware.ts
 import { Request, Response, NextFunction } from 'express';
-import crypto from 'crypto';
 
-class UnauthorizedError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'UnauthorizedError';
-  }
-}
-
-const basicAuth = (req: Request, res: Response, next: NextFunction) => {
+export const basicAuth = (req: Request, res: Response, next: NextFunction) => {
+  // Implement your basic authentication logic here
+  // Example: Check username and password in headers
   const authHeader = req.headers.authorization;
 
-  if (authHeader) {
-    const authCredentials = Buffer.from(authHeader.split(' ')[1], 'base64').toString('utf-8');
-    const [username, password] = authCredentials.split(':');
-
-    // Replace this check with your actual authentication logic
-    if (authenticateUser(username, password)) {
-      return next(); // Authorized
-    }
+  if (!authHeader || !authHeader.startsWith('Basic ')) {
+    return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  res.status(401).json({ error: 'Unauthorized' });
-};
+  const base64Credentials = authHeader.split(' ')[1];
+  const credentials = Buffer.from(base64Credentials, 'base64').toString('utf-8');
+  const [username, password] = credentials.split(':');
 
-const authenticateUser = (username: string, password: string): boolean => {
+  // Example: Check if username and password are valid
   // Replace this with your actual authentication logic
-  const storedPasswordHash = 'hashed_password'; // Fetch hashed password from a secure storage
 
-  const inputPasswordHash = crypto.createHash('sha256').update(password).digest('hex');
-
-  return storedPasswordHash === inputPasswordHash;
+  if (username === 'your_username' && password === 'your_password') {
+    next();
+  } else {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
 };
-
-export default basicAuth;
