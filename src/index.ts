@@ -5,8 +5,6 @@ import { UserRepository } from './models/userModel';
 import dotenv from 'dotenv';
 dotenv.config();
 
-console.log('Environment variables:', process.env);
-
 
 const app = express();
 const port = 3000;
