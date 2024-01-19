@@ -28,7 +28,8 @@
   <h3>Prerequisites</h3>
   <p>- Node.js installed (<a href="https://nodejs.org/" target="_blank">Download here</a>)</p>
   <p>- npm or yarn installed (<a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm" target="_blank">npm installation guide</a>, <a href="https://yarnpkg.com/getting-started/install" target="_blank">yarn installation guide</a>)</p>
-
+<p> - express.js
+<p>PostgreSQL</p>
   <h3>Installation</h3>
   <ol>
     <li>Clone the repository:</li>
