@@ -49,7 +49,7 @@ CREATE TABLE users (
   <li>Clone the repository:</li>
   <code>git clone https://github.com/JeanSilva08/node-service.git</code>
   <li>Navigate to the project folder:</li>
-  <code>cd YourRepository</code>
+  <code>cd node-service</code>
   <li>Install dependencies:</li>
   <code>npm install</code>
   <p>or</p>
