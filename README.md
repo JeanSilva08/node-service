@@ -47,7 +47,7 @@ CREATE TABLE users (
 <h3>Installation</h3>
 <ol>
   <li>Clone the repository:</li>
-  <code>git clone [https://github.com/YourUsername/YourRepository.git](https://github.com/JeanSilva08/node-service.git)</code>
+  <code>git clone https://github.com/JeanSilva08/node-service.git</code>
   <li>Navigate to the project folder:</li>
   <code>cd YourRepository</code>
   <li>Install dependencies:</li>
