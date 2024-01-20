@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 
-=======
+
+
 <h1>Node-Service Backend</h1>
->>>>>>> origin/master
+
 
 <h2>Table of Contents</h2>
 <ul>
