@@ -29,7 +29,7 @@
 <h2>Getting Started</h2>
 
 <h3>Prerequisites</h3>
-<p>- Node.js installed (<a href="https://nodejs.org/" target="_blank">Download here</a>)</p>
+<p>- Node.js installed (<a href="https://nodejs.org/" target="_blank">Download here</a>) (version 21.6.0) </p>
 <p>- npm or yarn installed (<a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm" target="_blank">npm installation guide</a>, <a href="https://yarnpkg.com/getting-started/install" target="_blank">yarn installation guide</a>)</p>
 <p>- PostgreSQL installed (<a href="https://www.postgresql.org/download/" target="_blank">Download here</a>)</p>
 <p>- Create a PostgreSQL database and table for the application. You can use tools like pgAdmin or the command line to achieve this.</p>
