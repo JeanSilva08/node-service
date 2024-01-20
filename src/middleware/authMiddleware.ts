@@ -11,7 +11,7 @@ export const basicAuth = (req: Request, res: Response, next: NextFunction) => {
   const credentials = Buffer.from(base64Credentials, 'base64').toString('utf-8');
   const [username, password] = credentials.split(':');
 
-  // Replace this with your actual authentication logic
+  
   if (isValidCredentials(username, password)) {
     next();
   } else {
@@ -19,9 +19,9 @@ export const basicAuth = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-// Example: Replace this with your actual authentication logic
+
 const isValidCredentials = (username: string, password: string): boolean => {
-  // Check if username and password are valid
+  
   return username === 'testuser' && password === 'testpassword';
 };
 

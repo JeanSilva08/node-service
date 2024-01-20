@@ -14,4 +14,4 @@ const pool = new Pool({
 console.log('Creating a new Pool instance with the following config:', pool);
 
 
-export { pool }; // Export the pool variable
+export { pool }; 

@@ -1,15 +1,14 @@
-// userRoutes.ts
 import express, { Request, Response } from 'express';
 import { UserRepository } from '../models/userModel';
 import { User } from '../models/userModel';
 import { basicAuth } from '../middleware/authMiddleware';
 import { validateUserEditRequest } from '../middleware/validateRequestMiddleware';
-import { pool } from '../db'; // Import the pool from db
+import { pool } from '../db'; 
 
 const router = express.Router();
 const userRepository = new UserRepository(pool);
 
-// Apply basicAuth middleware to protect these routes
+
 router.use(basicAuth);
 
 router.get('/api/users', async (req, res) => {

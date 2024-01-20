@@ -20,7 +20,7 @@ export class UserRepository {
       return userInfo || null;
     } catch (error) {
       console.error('Error retrieving user:', error);
-      throw error; // Propagate the error for the calling code to handle
+      throw error; 
     }
   }
 
@@ -36,7 +36,7 @@ export class UserRepository {
       }
     } catch (error) {
       console.error('Error updating user:', error);
-      throw error; // Propagate the error for the calling code to handle
+      throw error; 
     }
   }
 }

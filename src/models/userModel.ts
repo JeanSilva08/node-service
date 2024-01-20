@@ -1,11 +1,10 @@
-// userModel.ts
 import { Pool, QueryResult } from 'pg';
 
 export interface User {
   id: string;
   username: string;
   email: string;
-  // Add other properties as needed
+  
 }
 
 export class UserRepository {

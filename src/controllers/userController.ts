@@ -30,7 +30,7 @@ const UserController = (userRepository: UserRepository): Router => {
     }
   });
 
-  // Add other routes as needed
+  
 
   return router;
 };
