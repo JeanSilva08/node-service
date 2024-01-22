@@ -3,15 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// userRoutes.ts
 const express_1 = __importDefault(require("express"));
 const userModel_1 = require("../models/userModel");
 const authMiddleware_1 = require("../middleware/authMiddleware");
 const validateRequestMiddleware_1 = require("../middleware/validateRequestMiddleware");
-const db_1 = require("../db"); // Import the pool from db
+const db_1 = require("../db");
 const router = express_1.default.Router();
 const userRepository = new userModel_1.UserRepository(db_1.pool);
-// Apply basicAuth middleware to protect these routes
 router.use(authMiddleware_1.basicAuth);
 router.get('/api/users', async (req, res) => {
     try {

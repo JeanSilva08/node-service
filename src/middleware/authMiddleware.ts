@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 
 export const basicAuth = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
-  
+
   if (!authHeader || !authHeader.startsWith('Basic ')) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -11,7 +11,6 @@ export const basicAuth = (req: Request, res: Response, next: NextFunction) => {
   const credentials = Buffer.from(base64Credentials, 'base64').toString('utf-8');
   const [username, password] = credentials.split(':');
 
-  
   if (isValidCredentials(username, password)) {
     next();
   } else {
@@ -19,9 +18,6 @@ export const basicAuth = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-
 const isValidCredentials = (username: string, password: string): boolean => {
-  
   return username === 'testuser' && password === 'testpassword';
 };
-

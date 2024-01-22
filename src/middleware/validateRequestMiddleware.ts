@@ -1,8 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
 export const validateUserEditRequest = (req: Request, res: Response, next: NextFunction) => {
-  
-  
   const { username, email } = req.body;
 
   if (!username || !email) {
@@ -11,3 +9,4 @@ export const validateUserEditRequest = (req: Request, res: Response, next: NextF
 
   next();
 };
+
